@@ -1,3 +1,6 @@
+title: Welkom in ons spel!
+description: Bezoek de website regelmatig om up-to-date te blijven met ons project!
+
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/lucasdecmgter/cle4playngamestudio.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
