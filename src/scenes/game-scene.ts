@@ -19,8 +19,8 @@ export class GameScene extends Phaser.Scene {
         this.registry.set("score", 0)
         this.registry.set("life", 200)
         
-        this.physics.world.bounds.width = 1600
-        this.physics.world.bounds.height = 600
+        this.physics.world.bounds.width = 5693
+        this.physics.world.bounds.height = 3185
 
         this.scene.add("UIScene", new UIScene("UIScene"), true)
     }
@@ -31,7 +31,7 @@ export class GameScene extends Phaser.Scene {
         // 11 STARS
         this.stars = this.physics.add.group({
             key: 'star',
-            repeat: 11,
+            repeat: 12,
             setXY: { x: 12, y: 30, stepX: 70 },
         })
 
@@ -59,7 +59,7 @@ export class GameScene extends Phaser.Scene {
         this.physics.add.overlap(this.player, this.bombs, this.hitBomb, null, this)
 
         this.cameras.main.setSize(800, 600)
-        this.cameras.main.setBounds(0, 0, 1600, 600)
+        this.cameras.main.setBounds(0, 0, 5693, 600)
         this.cameras.main.startFollow(this.player)
     }
 
@@ -68,7 +68,7 @@ export class GameScene extends Phaser.Scene {
         this.scene.start("EndScene")
     }
 
-    private collectStar(player : Player , star) : void {
+    private collectStar(player:Player , star) : void {
         this.stars.remove(star, true, true)
         this.score++
         console.log(this.score)

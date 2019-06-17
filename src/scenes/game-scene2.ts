@@ -1,5 +1,6 @@
 import { Player } from "../objects/player"
 import { Platform } from "../objects/platform"
+import { Bomb } from "../objects/bomb"
 import { MovingPlatform } from "../objects/movingplatform"
 
 export class GameScene2 extends Phaser.Scene {
@@ -7,6 +8,7 @@ export class GameScene2 extends Phaser.Scene {
     private player : Player
     private platforms: Phaser.GameObjects.Group
     private stars: Phaser.Physics.Arcade.Group
+    private bombs: Phaser.GameObjects.Group
     private score = 0
 
     constructor() {
@@ -14,7 +16,11 @@ export class GameScene2 extends Phaser.Scene {
     }
 
     init(): void {
-
+        this.registry.set("score", 0)
+        this.registry.set("life", 200)
+        
+        this.physics.world.bounds.width = 5693
+        this.physics.world.bounds.height = 3185
     }
 
     create(): void {
@@ -36,12 +42,26 @@ export class GameScene2 extends Phaser.Scene {
             new Platform(this, 400, 400, "platform"),
             new MovingPlatform(this, 400, 250, "platform")
         ], true)
+
+        this.bombs = this.add.group()
+        this.bombs.add(new Bomb(this, 250, 45), true)
         
         // define collisions for bouncing, and overlaps for pickups
         this.physics.add.collider(this.stars, this.platforms)
         this.physics.add.collider(this.player, this.platforms)
+        this.physics.add.collider(this.bombs, this.platforms)
         
         this.physics.add.overlap(this.player, this.stars, this.collectStar, null, this)
+        this.physics.add.overlap(this.player, this.bombs, this.hitBomb, null, this)
+
+        this.cameras.main.setSize(800, 600)
+        this.cameras.main.setBounds(0, 0, 5693, 600)
+        this.cameras.main.startFollow(this.player)
+    }
+
+    private hitBomb(player:Player, bomb) {
+        this.scene.remove("UIScene")
+        this.scene.start("EndScene")
     }
 
     private collectStar(player : Player , star) : void {
@@ -58,5 +78,4 @@ export class GameScene2 extends Phaser.Scene {
     update(){
         this.player.update()
     }
-
 }

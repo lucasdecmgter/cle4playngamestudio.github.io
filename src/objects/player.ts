@@ -31,6 +31,5 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
         if (this.cursors.up.isDown && grounded) {
             this.setVelocityY(-400)
         }
-        
     }
 }
