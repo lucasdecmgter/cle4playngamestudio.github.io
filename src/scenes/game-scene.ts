@@ -42,9 +42,9 @@ export class GameScene extends Phaser.Scene {
         this.platforms = this.add.group({ runChildUpdate: true })
         this.platforms.addMultiple([
             new Platform(this, 2840, 3153, "ground"),
-            new Platform(this, 200, 3035, "platform"),
+            new Platform(this, 300, 3036, "platform"),
             new Platform(this, 1030, 3050, "platform"),
-            new Platform(this, 600, 3080, "movingplatform")
+            new Platform(this, 600, 3010, "movingplatform")
         ], true)
 
         // Add enemies

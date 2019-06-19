@@ -11,9 +11,8 @@ export class StartScene extends Phaser.Scene {
 
     preload(): void {              
         // add another image here
-        // this.add.image(0, 0, 'background')
         // this.add.image(0, 0, 'item').setOrigin(0, 0)
-        
+        this.add.image(0, 0, 'sky')
         // add text here
         this.add.text(400, 300, 'Rob.ai', { fontFamily: 'Sheeping Cats Straight', fontSize: 70, color: '#000000' }).setOrigin(0.5).setStroke('#2ac9be', 16)
 
