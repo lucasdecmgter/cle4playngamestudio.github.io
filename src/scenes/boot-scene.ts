@@ -6,8 +6,7 @@ export class BootScene extends Phaser.Scene {
         super({ key: "BootScene" })
     }
 
-    init(){
-    }
+    init(){}
 
     preload(): void {
         this.load.image('sky', require('../assets/background.png'))
