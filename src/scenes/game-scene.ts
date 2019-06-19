@@ -1,6 +1,7 @@
 import { Player } from "../objects/player"
 import { Platform } from "../objects/platform"
 import { Bomb } from "../objects/bomb"
+import { MovingPlatform } from "../objects/movingplatform"
 import { UIScene } from "../scenes/ui-scene"
 
 export class GameScene extends Phaser.Scene {
@@ -44,7 +45,7 @@ export class GameScene extends Phaser.Scene {
             new Platform(this, 2840, 3153, "ground"),
             new Platform(this, 300, 3036, "platform"),
             new Platform(this, 1030, 3050, "platform"),
-            new Platform(this, 600, 3010, "movingplatform")
+            new MovingPlatform(this, 600, 3010, "movingplatform")
         ], true)
 
         // Add enemies
@@ -74,13 +75,12 @@ export class GameScene extends Phaser.Scene {
         this.scene.start("EndScene")
     }
 
-    private collectStar(player:Player , star) : void {
+    private collectStar(player : Player , star) : void {
         this.stars.remove(star, true, true)
-        this.score++
-        console.log(this.score)
+        this.registry.values.score++
 
         // TO DO check if we have all the stars, then go to the end scene
-        if(this.score == 12) {
+        if(this.registry.values.score == 12) {
             this.scene.start("GameScene2")
         }
     }
