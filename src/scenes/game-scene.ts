@@ -28,10 +28,10 @@ export class GameScene extends Phaser.Scene {
     create(): void {
         this.add.image(0, 0, 'sky').setOrigin(0, 0)      
     
-        // 11 STARS
+        // Het spawnen van 12 chips
         this.stars = this.physics.add.group({
             key: 'star',
-            repeat: 12,
+            repeat: 11,
             setXY: { x: 12, y: 30, stepX: 70 },
         })
 
@@ -41,25 +41,30 @@ export class GameScene extends Phaser.Scene {
         // Add platforms
         this.platforms = this.add.group({ runChildUpdate: true })
         this.platforms.addMultiple([
-            new Platform(this, 800, 574, "ground"),
-            new Platform(this, 200, 400, "platform"),
-            new Platform(this, 600, 400, "platform")
+            new Platform(this, 2840, 3153, "ground"),
+            new Platform(this, 200, 3120, "platform"),
+            new Platform(this, 600, 3145, "platform")
         ], true)
 
         // Add enemies
         this.bombs = this.add.group()
         this.bombs.add(new Bomb(this, 250, 45), true)
         
-        // define collisions for bouncing, and overlaps for pickups
+        // Definiëren van botsingen van de player met de vijanden en de verzamelobjecten
         this.physics.add.collider(this.stars, this.platforms)
         this.physics.add.collider(this.player, this.platforms)
         this.physics.add.collider(this.bombs, this.platforms)
         
         this.physics.add.overlap(this.player, this.stars, this.collectStar, null, this)
         this.physics.add.overlap(this.player, this.bombs, this.hitBomb, null, this)
+        
+        // Als player een vijand raakt, dan wordt de score weer op 0 gezet, zodat hij alles weer moet verzamelen
+        if(this.hitBomb) {
+            this.score = 0
+        }
 
         this.cameras.main.setSize(800, 600)
-        this.cameras.main.setBounds(0, 0, 5693, 600)
+        this.cameras.main.setBounds(0, 0, 5693, 3185)
         this.cameras.main.startFollow(this.player)
     }
 
