@@ -28,7 +28,7 @@ export class GameScene2 extends Phaser.Scene {
     create(): void {
         this.add.image(0, 0, 'sky').setOrigin(0, 0)      
     
-        // 11 STARS
+        // 12 STARS
         this.stars = this.physics.add.group({
             key: 'star',
             repeat: 11,
@@ -40,13 +40,13 @@ export class GameScene2 extends Phaser.Scene {
 
         this.platforms = this.add.group({ runChildUpdate: true })
         this.platforms.addMultiple([
-            new Platform(this, 250, 570, "ground"),
-            new Platform(this, 400, 400, "platform"),
-            new MovingPlatform(this, 400, 250, "platform")
+            new Platform(this, 2840, 3153, "ground"),
+            new Platform(this, 50, 3025, "platform"),
+            new MovingPlatform(this, 800, 3055, "platform")
         ], true)
 
         this.bombs = this.add.group()
-        this.bombs.add(new Bomb(this, 250, 45), true)
+        this.bombs.add(new Bomb(this, 250, 3085), true)
         
         // define collisions for bouncing, and overlaps for pickups
         this.physics.add.collider(this.stars, this.platforms)
@@ -57,7 +57,7 @@ export class GameScene2 extends Phaser.Scene {
         this.physics.add.overlap(this.player, this.bombs, this.hitBomb, null, this)
 
         this.cameras.main.setSize(800, 600)
-        this.cameras.main.setBounds(0, 0, 5693, 600)
+        this.cameras.main.setBounds(0, 0, 5693, 3185)
         this.cameras.main.startFollow(this.player)
     }
 
@@ -73,11 +73,10 @@ export class GameScene2 extends Phaser.Scene {
 
     private collectStar(player : Player , star) : void {
         this.stars.remove(star, true, true)
-        this.score++
-        console.log(this.score)
+        this.registry.values.score++
 
         // TO DO check if we have all the stars, then go to the end scene
-        if(this.score == 12) {
+        if(this.registry.values.score == 12) {
             this.scene.start("GameScene3")
         }
     }

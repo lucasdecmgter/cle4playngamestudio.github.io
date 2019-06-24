@@ -43,14 +43,14 @@ export class GameScene extends Phaser.Scene {
         this.platforms = this.add.group({ runChildUpdate: true })
         this.platforms.addMultiple([
             new Platform(this, 2840, 3153, "ground"),
-            new Platform(this, 300, 3036, "platform"),
+            new Platform(this, 150, 3036, "platform"),
             new Platform(this, 1030, 3050, "platform"),
-            new MovingPlatform(this, 600, 3010, "movingplatform")
+            new MovingPlatform(this, 600, 2960, "movingplatform")
         ], true)
 
         // Add enemies
         this.bombs = this.add.group()
-        this.bombs.add(new Bomb(this, 45, 2800), true)
+        this.bombs.add(new Bomb(this, 600, 2800), true)
         
         // Definiëren van botsingen van de player met de vijanden en de verzamelobjecten
         this.physics.add.collider(this.stars, this.platforms)
