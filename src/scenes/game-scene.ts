@@ -76,6 +76,7 @@ export class GameScene extends Phaser.Scene {
         if(this.registry.values.life == 0) {
             this.scene.remove("UIScene")
             this.scene.start("EndScene")
+            this.registry.values.score = 0
         }
     }
 

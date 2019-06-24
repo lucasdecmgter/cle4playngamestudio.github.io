@@ -62,7 +62,13 @@ export class GameScene3 extends Phaser.Scene {
     }
 
     private hitBomb(player:Player, bomb) {
-        this.scene.start("EndScene")
+        this.registry.values.life--
+
+        if(this.registry.values.life == 0) {
+            this.scene.remove("UIScene")
+            this.scene.start("EndScene")
+            this.registry.values.score = 0
+        }
     }
 
     private collectStar(player : Player , star) : void {
