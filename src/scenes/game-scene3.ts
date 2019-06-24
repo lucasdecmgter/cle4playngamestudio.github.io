@@ -10,6 +10,7 @@ export class GameScene3 extends Phaser.Scene {
     private stars: Phaser.Physics.Arcade.Group
     private bombs: Phaser.GameObjects.Group
     private score = 0
+    private life = 200
 
     constructor() {
         super({ key: "GameScene3" })
