@@ -19,8 +19,8 @@ export class BootScene extends Phaser.Scene {
         this.load.image('ground', require('../assets/platform_ground.png'))
         this.load.image('mybutton1', require('../assets/startgame.png'))
         this.load.image('mybutton2', require('../assets/tryagain.png'))
-        this.load.image('gameoverimage', require('../assets/gameoverimage.png'))
         this.load.image('mybutton3', require('../assets/quitgame.png'))
+        this.load.image('gameoverimage', require('../assets/gameoverimage.png'))
 
         this.load.on('complete', () => {
             console.log("everything is loaded")

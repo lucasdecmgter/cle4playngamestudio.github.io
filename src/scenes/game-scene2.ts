@@ -11,6 +11,7 @@ export class GameScene2 extends Phaser.Scene {
     private stars: Phaser.Physics.Arcade.Group
     private bombs: Phaser.GameObjects.Group
     private score = 0
+    private life = 200
 
     constructor() {
         super({ key: "GameScene2" })
@@ -39,7 +40,7 @@ export class GameScene2 extends Phaser.Scene {
 
         this.platforms = this.add.group({ runChildUpdate: true })
         this.platforms.addMultiple([
-            new Platform(this, 250, 570, "ground"),
+            new Platform(this, 520, 520, "ground"),
             new Platform(this, 400, 400, "platform"),
             new MovingPlatform(this, 400, 250, "platform")
         ], true)
@@ -55,14 +56,24 @@ export class GameScene2 extends Phaser.Scene {
         this.physics.add.overlap(this.player, this.stars, this.collectStar, null, this)
         this.physics.add.overlap(this.player, this.bombs, this.hitBomb, null, this)
 
+        // Als player een vijand raakt, dan wordt de score weer op 0 gezet, zodat hij alles weer moet verzamelen
+        if(this.hitBomb) {
+            this.score = 0
+            this.life --
+        }
+
         this.cameras.main.setSize(800, 600)
         this.cameras.main.setBounds(0, 0, 5693, 600)
         this.cameras.main.startFollow(this.player)
     }
 
     private hitBomb(player:Player, bomb) {
-        this.scene.remove("UIScene")
-        this.scene.start("EndScene")
+        this.registry.values.life--
+
+        if(this.registry.values.life == 0) {
+            this.scene.remove("UIScene")
+    this.scene.start("EndScene")
+        }
     }
 
     private collectStar(player : Player , star) : void {
