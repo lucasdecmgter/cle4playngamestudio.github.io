@@ -41,12 +41,12 @@ export class GameScene3 extends Phaser.Scene {
         this.platforms.addMultiple([
             new Platform(this, 2840, 3153, "ground"),
             new Platform(this, 600, 2960, "platform"),
-            new Platform(this, 250, 3050, "platform"),
+            new Platform(this, 250, 3020, "platform"),
             new MovingPlatform(this, 900, 2830, "platform")
         ], true)
 
         this.bombs = this.add.group()
-        this.bombs.add(new Bomb(this, 250, 3095), true)
+        this.bombs.add(new Bomb(this, 250, 2900), true)
     
         // define collisions for bouncing, and overlaps for pickups
         this.physics.add.collider(this.stars, this.platforms)
@@ -77,7 +77,7 @@ export class GameScene3 extends Phaser.Scene {
 
         // TO DO check if we have all the stars, then go to the end scene
         if(this.registry.values.score == 12) {
-            this.scene.start("GameScene2")
+            this.scene.start("YouWon")
         }
     }
 

@@ -6,13 +6,14 @@ import { GameScene2 } from "./scenes/game-scene2"
 import { GameScene3 } from "./scenes/game-scene3"
 import { EndScene } from "./scenes/end-scene"
 import { UIScene } from "./scenes/ui-scene"
+import { WonScene } from "./scenes/won-scene";
 
 const config: GameConfig = {
     width: 800,
     height: 600,
     parent: "game",
     resolution: window.devicePixelRatio,
-    scene: [BootScene, StartScene, UIScene, GameScene, GameScene2, GameScene3, EndScene],
+    scene: [BootScene, StartScene, UIScene, GameScene, GameScene2, GameScene3, EndScene, WonScene],
     input: {
         keyboard: true
     },

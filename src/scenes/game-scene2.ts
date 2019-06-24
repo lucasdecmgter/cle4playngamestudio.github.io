@@ -32,7 +32,7 @@ export class GameScene2 extends Phaser.Scene {
         this.stars = this.physics.add.group({
             key: 'star',
             repeat: 11,
-            setXY: { x: 12, y: 30, stepX: 70 },
+            setXY: { x: 12, y: 2700, stepX: 70 },
         })
 
         // TODO add player
@@ -46,7 +46,7 @@ export class GameScene2 extends Phaser.Scene {
         ], true)
 
         this.bombs = this.add.group()
-        this.bombs.add(new Bomb(this, 250, 3085), true)
+        this.bombs.add(new Bomb(this, 600, 3085), true)
         
         // define collisions for bouncing, and overlaps for pickups
         this.physics.add.collider(this.stars, this.platforms)
