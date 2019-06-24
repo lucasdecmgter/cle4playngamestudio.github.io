@@ -18,9 +18,9 @@ export class EndScene extends Phaser.Scene {
             this.scene.start(`GameScene`)
         })
 
-        let btn2 = this.add.image(400, 530, 'mybutton3')
+        let btn2 = this.add.image(400,520, 'mybutton3')
         btn2.setInteractive()
-        btn2.on('pointdown', (pointer) => {
+        btn2.on('pointerdown', (pointer) => {
             this.scene.start(`StartScene`)
         })
     }
