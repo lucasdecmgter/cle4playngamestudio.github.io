@@ -15,7 +15,6 @@ export class GameScene extends Phaser.Scene {
     constructor() {
         super({ key: "GameScene" })
     }
-
     init(): void {
         this.registry.set("score", 0)
         this.registry.set("life", 200)
