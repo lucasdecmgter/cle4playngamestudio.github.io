@@ -2,6 +2,7 @@ import { Player } from "../objects/player"
 import { Platform } from "../objects/platform"
 import { Bomb } from "../objects/bomb"
 import { MovingPlatform } from "../objects/movingplatform"
+import { UIScene } from "../scenes/ui-scene"
 
 export class GameScene2 extends Phaser.Scene {
 
@@ -38,7 +39,7 @@ export class GameScene2 extends Phaser.Scene {
 
         this.platforms = this.add.group({ runChildUpdate: true })
         this.platforms.addMultiple([
-            new Platform(this, 2840, 3153, "ground"),
+            new Platform(this, 250, 460, "ground"),
             new Platform(this, 400, 400, "platform"),
             new MovingPlatform(this, 400, 250, "platform")
         ], true)
