@@ -77,7 +77,8 @@ export class GameScene3 extends Phaser.Scene {
 
         // TO DO check if we have all the stars, then go to the end scene
         if(this.registry.values.score == 12) {
-            this.scene.start("YouWon")
+            this.scene.remove("UIScene")
+            this.scene.start("WonScene")
         }
     }
 

@@ -1,7 +1,7 @@
 export class WonScene extends Phaser.Scene {
 
     constructor() {
-        super({key: "EndScene"})
+        super({key: "WonScene"})
     }
 
     init(): void {}
