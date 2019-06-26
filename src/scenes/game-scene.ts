@@ -45,7 +45,10 @@ export class GameScene extends Phaser.Scene {
             new Platform(this, 2847, 3153, "ground"),
             new Platform(this, 150, 2188, "platform"),
             new Platform(this, 1030, 972, "platform"),
+            new Platform(this, 150, 2714, "platform"),
             new Platform(this, 150, 2634, "platform"),
+            new Platform(this, 750, 2570, "platform"),
+            new Platform(this, 840, 2910, "platform"),
             new Platform(this, 1030, 2700, "platform"),
             new Platform(this, 2600, 2540, "platform"),
             new Platform(this, 450, 2600, "platform"),
@@ -53,12 +56,14 @@ export class GameScene extends Phaser.Scene {
             new Platform(this, 1850, 2560, "platform"),
             new Platform(this, 2200, 1600, "platform"),
             new Platform(this, 4897, 2920, "platform"),
-            new Platform(this, 3860, 1647, "wall"),
-            new Platform(this, 5288, 2976, "wall"),
-            new Platform(this, 1058, 2024, "wall"),
+            new Platform(this, 1200, 2879, "wall"),
+            new Platform(this, 1200, 2976, "wall"),
+            new Platform(this, 1200, 3073, "wall"),
             new MovingPlatform(this, 1823, 463, "movingplatform"),
             new MovingPlatform(this, 1072, 2404, "movingplatform"),
-            new MovingPlatform(this, 3304, 2960, "movingplatform")
+            new MovingPlatform(this, 3304, 2960, "movingplatform"),
+            new MovingPlatform(this, 450, 2800, "movingplatformvertical"),
+            new MovingPlatform(this, 3304, 2760, "movingplatformvertical"),
         ], true)
 
         // Add enemies

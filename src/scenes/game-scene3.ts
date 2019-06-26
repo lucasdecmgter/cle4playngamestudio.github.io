@@ -59,7 +59,7 @@ export class GameScene3 extends Phaser.Scene {
         this.cameras.main.setSize(800, 600)
         this.cameras.main.setBounds(0, 0, 5693, 3185)
         this.cameras.main.startFollow(this.player)
-    }bomb
+    }
 
     private hitEnemy(player:Player, enemy) {
         this.registry.values.life--

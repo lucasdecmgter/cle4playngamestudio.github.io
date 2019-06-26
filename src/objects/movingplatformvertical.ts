@@ -9,19 +9,19 @@ export class MovingPlatform extends Phaser.Physics.Arcade.Sprite {
         
         let body = this.body as Phaser.Physics.Arcade.Body
         body.setAllowGravity(false)
-        this.setGravity(0) 
+        this.setGravity(0)
         this.setImmovable(true)
 
         // moving platform
-        this.setVelocityX(100)
-        this.startPosition = x
+        this.setVelocityY(50)
+        this.startPosition = y
     }
 
     public update(): void {
-        if (this.x >= this.startPosition + 150) {
-            this.setVelocityX(-50)
-        }  else if (this.x <= this.startPosition - 150) {
-            this.setVelocityX(50)
+        if (this.y >= this.startPosition + 150) {
+            this.setVelocityY(-50)
+        }  else if (this.y <= this.startPosition - 150) {
+            this.setVelocityY(50)
         }
     }
 }

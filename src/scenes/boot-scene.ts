@@ -16,6 +16,7 @@ export class BootScene extends Phaser.Scene {
         this.load.image('rob', require('../assets/robot.png'))
         this.load.image('platform', require('../assets/float.png'))
         this.load.image('movingplatform', require('../assets/float.png'))
+        this.load.image('movingplatformvertical', require('../assets/float.png'))
         this.load.image('ground', require('../assets/platform_ground.png'))
         this.load.image('wall', require('../assets/wall.png'))
         this.load.image('mybutton1', require('../assets/startgame.png'))
