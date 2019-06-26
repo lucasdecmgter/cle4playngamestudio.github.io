@@ -19,7 +19,7 @@ export class GameScene2 extends Phaser.Scene {
 
     init(): void {
         this.registry.set("score", 0)
-        this.registry.set("life", 200)
+        this.registry.set("life", 100)
         
         this.physics.world.bounds.width = 5693
         this.physics.world.bounds.height = 3185
@@ -30,11 +30,10 @@ export class GameScene2 extends Phaser.Scene {
     
         // 12 chip
         this.chip = this.physics.add.group({
-            key: 'star',
+            key: 'chip',
             repeat: 11,
             setXY: { x: 12, y: 2700, stepX: 70 },
         })
-
         // TODO add player
         this.player = new Player(this)
 
@@ -42,17 +41,9 @@ export class GameScene2 extends Phaser.Scene {
         this.platforms.addMultiple([
             new Platform(this, 2840, 3153, "ground"),
             new Platform(this, 50, 2965, "platform"),
-            new Platform(this, 50, 2965, "platform"),
-            new Platform(this, 50, 2965, "platform"),
-            new Platform(this, 50, 2965, "platform"),
-            new Platform(this, 50, 2965, "platform"),
-            new Platform(this, 50, 2965, "platform"),
-            new Platform(this, 50, 2965, "platform"),
+            new Platform(this, 150, 3036, "platform"),
             new MovingPlatform(this, 800, 3055, "platform"),
-            new MovingPlatform(this, 800, 3055, "platform"),
-            new MovingPlatform(this, 800, 3055, "platform"),
-            new MovingPlatform(this, 800, 3055, "platform"),
-            new MovingPlatform(this, 800, 3055, "platform")
+         
         ], true)
 
         this.enemys = this.add.group()
@@ -63,7 +54,7 @@ export class GameScene2 extends Phaser.Scene {
         this.physics.add.collider(this.player, this.platforms)
         this.physics.add.collider(this.enemys, this.platforms)
         
-        this.physics.add.overlap(this.player, this.chip, this.collectStar, null, this)
+        this.physics.add.overlap(this.player, this.chip, this.collectchip, null, this)
         this.physics.add.overlap(this.player, this.enemys, this.hitenemy, null, this)
 
         this.cameras.main.setSize(800, 600)
@@ -81,8 +72,8 @@ export class GameScene2 extends Phaser.Scene {
         }
     }
 
-    private collectStar(player : Player , star) : void {
-        this.chip.remove(star, true, true)
+    private collectchip(player : Player , chip) : void {
+        this.chip.remove(chip, true, true)
         this.registry.values.score++
 
         // TO DO check if we have all the chip, then go to the end scene

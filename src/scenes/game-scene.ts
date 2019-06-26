@@ -11,7 +11,7 @@ export class GameScene extends Phaser.Scene {
     private chip: Phaser.Physics.Arcade.Group
     private enemys: Phaser.GameObjects.Group
     private score = 0
-    private life = 200
+    private life = 100
 
     constructor() {
         super({ key: "GameScene" })
