@@ -29,10 +29,10 @@ export class GameScene extends Phaser.Scene {
     create(): void {
         this.add.image(0, 0, 'sky').setOrigin(0, 0)      
     
-        // Het spawnen van 12 chip
+        // Het spawnen van 30 chip
         this.chip = this.physics.add.group({
             key: 'chip',
-            repeat: 11,
+            repeat: 29,
             setXY: { x: 12, y: 30, stepX: 70 },
         })
 
