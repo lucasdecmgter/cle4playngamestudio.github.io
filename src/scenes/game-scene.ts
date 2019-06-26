@@ -32,7 +32,7 @@ export class GameScene extends Phaser.Scene {
         // Het spawnen van 12 chips
         this.stars = this.physics.add.group({
             key: 'star',
-            repeat: 11,
+            repeat: 30,
             setXY: { x: 12, y: 30, stepX: 70 },
         })
 
@@ -42,16 +42,30 @@ export class GameScene extends Phaser.Scene {
         // Add platforms
         this.platforms = this.add.group({ runChildUpdate: true })
         this.platforms.addMultiple([
-            new Platform(this, 2840, 3153, "ground"),
-            new Platform(this, 150, 3036, "platform"),
-            new Platform(this, 1030, 3050, "platform"),
-            new Platform(this, 1200, 2700, "wall"),
-            new MovingPlatform(this, 600, 2960, "movingplatform")
+            new Platform(this, 2847, 3153, "ground"),
+            new Platform(this, 150, 2188, "platform"),
+            new Platform(this, 1030, 972, "platform"),
+            new Platform(this, 150, 2634, "platform"),
+            new Platform(this, 1030, 2700, "platform"),
+            new Platform(this, 2600, 2540, "platform"),
+            new Platform(this, 450, 2600, "platform"),
+            new Platform(this, 1620, 1400, "platform"),
+            new Platform(this, 1850, 2560, "platform"),
+            new Platform(this, 2200, 1600, "platform"),
+            new Platform(this, 4897, 2920, "platform"),
+            new Platform(this, 3860, 1647, "wall"),
+            new Platform(this, 5288, 2976, "wall"),
+            new Platform(this, 1058, 2024, "wall"),
+            new MovingPlatform(this, 1823, 463, "movingplatform"),
+            new MovingPlatform(this, 1072, 2404, "movingplatform"),
+            new MovingPlatform(this, 3304, 2960, "movingplatform")
         ], true)
 
         // Add enemies
         this.bombs = this.add.group()
         this.bombs.add(new Bomb(this, 600, 2800), true)
+        this.bombs.add(new Bomb(this, 860, 2650), true)
+        this.bombs.add(new Bomb(this, 1036, 3020), true)
         
         // Definiëren van botsingen van de player met de vijanden en de verzamelobjecten
         this.physics.add.collider(this.stars, this.platforms)
@@ -86,7 +100,7 @@ export class GameScene extends Phaser.Scene {
         this.registry.values.score++
 
         // TO DO check if we have all the stars, then go to the end scene
-        if(this.registry.values.score == 12) {
+        if(this.registry.values.score == 25) {
             this.scene.start("GameScene2")
         }
     }
