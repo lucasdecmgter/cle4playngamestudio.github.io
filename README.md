@@ -2,3 +2,4 @@
 - Eigenaar: Lucas Hijman namens Team PLayN' GameStudio
 - Vaste collaborateurs: Prewish en Najee
 - Kaders: Discovery, swindle & robots
+- Codetaal waarin wordt gewerkt is TypeScript
