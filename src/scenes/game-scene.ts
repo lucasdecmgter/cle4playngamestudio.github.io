@@ -1,6 +1,6 @@
 import { Player } from "../objects/player"
 import { Platform } from "../objects/platform"
-import { Bomb } from "../objects/bomb"
+import { enemy } from "../objects/bomb"
 import { MovingPlatform } from "../objects/movingplatform"
 import { UIScene } from "../scenes/ui-scene"
 
@@ -8,8 +8,8 @@ export class GameScene extends Phaser.Scene {
 
     private player : Player
     private platforms: Phaser.GameObjects.Group
-    private stars: Phaser.Physics.Arcade.Group
-    private bombs: Phaser.GameObjects.Group
+    private chip: Phaser.Physics.Arcade.Group
+    private enemys: Phaser.GameObjects.Group
     private score = 0
     private life = 200
 
@@ -29,9 +29,9 @@ export class GameScene extends Phaser.Scene {
     create(): void {
         this.add.image(0, 0, 'sky').setOrigin(0, 0)      
     
-        // Het spawnen van 12 chips
-        this.stars = this.physics.add.group({
-            key: 'star',
+        // Het spawnen van 12 chip
+        this.chip = this.physics.add.group({
+            key: 'chip',
             repeat: 11,
             setXY: { x: 12, y: 30, stepX: 70 },
         })
@@ -50,19 +50,19 @@ export class GameScene extends Phaser.Scene {
         ], true)
 
         // Add enemies
-        this.bombs = this.add.group()
-        this.bombs.add(new Bomb(this, 600, 2800), true)
+        this.enemys = this.add.group()
+        this.enemys.add(new enemy(this, 600, 2800), true)
         
         // Definiëren van botsingen van de player met de vijanden en de verzamelobjecten
-        this.physics.add.collider(this.stars, this.platforms)
+        this.physics.add.collider(this.chip, this.platforms)
         this.physics.add.collider(this.player, this.platforms)
-        this.physics.add.collider(this.bombs, this.platforms)
+        this.physics.add.collider(this.enemys, this.platforms)
         
-        this.physics.add.overlap(this.player, this.stars, this.collectStar, null, this)
-        this.physics.add.overlap(this.player, this.bombs, this.hitBomb, null, this)
+        this.physics.add.overlap(this.player, this.chip, this.collectchip, null, this)
+        this.physics.add.overlap(this.player, this.enemys, this.hitenemy, null, this)
         
         // Als player een vijand raakt, dan wordt de score weer op 0 gezet, zodat hij alles weer moet verzamelen
-        if(this.hitBomb) {
+        if(this.hitenemy) {
             this.life --
         }
 
@@ -71,7 +71,7 @@ export class GameScene extends Phaser.Scene {
         this.cameras.main.startFollow(this.player)
     }
 
-    private hitBomb(player:Player, bomb) {
+    private hitenemy(player:Player, enemy) {
         this.registry.values.life--
 
         if(this.registry.values.life == 0) {
@@ -81,11 +81,11 @@ export class GameScene extends Phaser.Scene {
         }
     }
 
-    private collectStar(player : Player , star) : void {
-        this.stars.remove(star, true, true)
+    private collectchip(player : Player , chip) : void {
+        this.chip.remove(chip, true, true)
         this.registry.values.score++
 
-        // TO DO check if we have all the stars, then go to the end scene
+        // TO DO check if we have all the chip, then go to the end scene
         if(this.registry.values.score == 12) {
             this.scene.start("GameScene2")
         }

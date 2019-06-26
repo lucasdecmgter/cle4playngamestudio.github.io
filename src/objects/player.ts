@@ -3,7 +3,7 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     private cursors: Phaser.Input.Keyboard.CursorKeys
 
     constructor(scene) {
-        super(scene, 200, 3080, "bmo")
+        super(scene, 200, 3080, "rob")
 
         this.cursors = this.scene.input.keyboard.createCursorKeys()
         

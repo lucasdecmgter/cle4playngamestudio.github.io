@@ -12,7 +12,7 @@ export class Platform extends Phaser.Physics.Arcade.Sprite {
         this.setGravity(0) 
         this.setImmovable(true)
 
-        // friction 0 to 1 (ice has low friction) // has no effecct
+    
         this.setFrictionX(-10)
     }
 }
