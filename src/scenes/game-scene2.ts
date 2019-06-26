@@ -41,17 +41,9 @@ export class GameScene2 extends Phaser.Scene {
         this.platforms.addMultiple([
             new Platform(this, 2840, 3153, "ground"),
             new Platform(this, 50, 2965, "platform"),
-            new Platform(this, 50, 2965, "platform"),
-            new Platform(this, 50, 2965, "platform"),
-            new Platform(this, 50, 2965, "platform"),
-            new Platform(this, 50, 2965, "platform"),
-            new Platform(this, 50, 2965, "platform"),
-            new Platform(this, 50, 2965, "platform"),
+            new Platform(this, 150, 3036, "platform"),
             new MovingPlatform(this, 800, 3055, "platform"),
-            new MovingPlatform(this, 800, 3055, "platform"),
-            new MovingPlatform(this, 800, 3055, "platform"),
-            new MovingPlatform(this, 800, 3055, "platform"),
-            new MovingPlatform(this, 800, 3055, "platform")
+         
         ], true)
 
         this.enemys = this.add.group()
