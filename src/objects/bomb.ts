@@ -5,10 +5,9 @@ export class Bomb extends Phaser.Physics.Arcade.Sprite {
 
         this.scene.physics.add.existing(this)
 
-        this.setBounce(0)
+        this.setBounce(1)
         this.setCollideWorldBounds(true)
 
-        this.setAngularVelocity(30);
-        this.setVelocityX(100)
+        this.setVelocityX(80)
     }
 }

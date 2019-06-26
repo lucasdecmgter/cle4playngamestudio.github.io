@@ -18,7 +18,7 @@ export class GameScene extends Phaser.Scene {
     }
     init(): void {
         this.registry.set("score", 0)
-        this.registry.set("life", 200)
+        this.registry.set("life", 100)
         
         this.physics.world.bounds.width = 5693
         this.physics.world.bounds.height = 3185
@@ -45,6 +45,7 @@ export class GameScene extends Phaser.Scene {
             new Platform(this, 2840, 3153, "ground"),
             new Platform(this, 150, 3036, "platform"),
             new Platform(this, 1030, 3050, "platform"),
+            new Platform(this, 1200, 2700, "wall"),
             new MovingPlatform(this, 600, 2960, "movingplatform")
         ], true)
 

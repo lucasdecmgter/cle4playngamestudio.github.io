@@ -16,6 +16,6 @@ export class UIScene extends Phaser.Scene {
         this.scoreField.text = 'Score : ' + this.registry.values.score
         this.graphics.clear()
         this.graphics.fillRectShape(new Phaser.Geom.Rectangle(20, 20, this.registry.values.life, 20))
-        this.graphics.strokeRectShape(new Phaser.Geom.Rectangle(20, 20, 200, 20))
+        this.graphics.strokeRectShape(new Phaser.Geom.Rectangle(20, 20, 100, 20))
     }
 }

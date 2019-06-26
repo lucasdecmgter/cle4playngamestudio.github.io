@@ -17,6 +17,7 @@ export class BootScene extends Phaser.Scene {
         this.load.image('platform', require('../assets/float.png'))
         this.load.image('movingplatform', require('../assets/float.png'))
         this.load.image('ground', require('../assets/platform_ground.png'))
+        this.load.image('wall', require('../assets/thinwall.png'))
         this.load.image('mybutton1', require('../assets/startgame.png'))
         this.load.image('mybutton2', require('../assets/tryagain.png'))
         this.load.image('mybutton3', require('../assets/quitgame.png'))
@@ -25,7 +26,8 @@ export class BootScene extends Phaser.Scene {
 
         this.load.on('complete', () => {
             console.log("everything is loaded")
-            // add code here to switch to the start scene
+            
+            // Start de startscene
             this.scene.start("StartScene")
         })
     }

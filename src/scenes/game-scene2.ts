@@ -11,7 +11,7 @@ export class GameScene2 extends Phaser.Scene {
     private stars: Phaser.Physics.Arcade.Group
     private bombs: Phaser.GameObjects.Group
     private score = 0
-    private life = 200
+    private life = 100
 
     constructor() {
         super({ key: "GameScene2" })
@@ -41,12 +41,22 @@ export class GameScene2 extends Phaser.Scene {
         this.platforms = this.add.group({ runChildUpdate: true })
         this.platforms.addMultiple([
             new Platform(this, 2840, 3153, "ground"),
-            new Platform(this, 50, 3025, "platform"),
+            new Platform(this, 50, 2965, "platform"),
+            new Platform(this, 50, 2965, "platform"),
+            new Platform(this, 50, 2965, "platform"),
+            new Platform(this, 50, 2965, "platform"),
+            new Platform(this, 50, 2965, "platform"),
+            new Platform(this, 50, 2965, "platform"),
+            new Platform(this, 50, 2965, "platform"),
+            new MovingPlatform(this, 800, 3055, "platform"),
+            new MovingPlatform(this, 800, 3055, "platform"),
+            new MovingPlatform(this, 800, 3055, "platform"),
+            new MovingPlatform(this, 800, 3055, "platform"),
             new MovingPlatform(this, 800, 3055, "platform")
         ], true)
 
         this.bombs = this.add.group()
-        this.bombs.add(new Bomb(this, 600, 3085), true)
+        this.bombs.add(new Bomb(this, 600, 3035), true)
         
         // define collisions for bouncing, and overlaps for pickups
         this.physics.add.collider(this.stars, this.platforms)
