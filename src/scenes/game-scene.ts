@@ -1,7 +1,8 @@
 import { Player } from "../objects/player"
 import { Platform } from "../objects/platform"
 import { enemy } from "../objects/bomb"
-import { MovingPlatform } from "../objects/movingplatform"
+import { HorizontalMoving } from "../objects/movingplatform"
+import { VerticalMoving } from "../objects/movingplatformvertical"
 import { UIScene } from "../scenes/ui-scene"
 
 export class GameScene extends Phaser.Scene {
@@ -39,31 +40,33 @@ export class GameScene extends Phaser.Scene {
         // TODO add player
         this.player = new Player(this)
 
-        // Add platforms
+        // Platformen maken
         this.platforms = this.add.group({ runChildUpdate: true })
         this.platforms.addMultiple([
             new Platform(this, 2847, 3153, "ground"),
-            new Platform(this, 150, 2188, "platform"),
+            new Platform(this, 150, 1886, "platform"),
             new Platform(this, 1030, 972, "platform"),
-            new Platform(this, 150, 2714, "platform"),
-            new Platform(this, 150, 2634, "platform"),
-            new Platform(this, 750, 2570, "platform"),
+            new Platform(this, 70, 2714, "platform"),
+            new Platform(this, 510, 2449, "platform"),
+            new Platform(this, 975, 3030, "platform"),
+            new Platform(this, 750, 2560, "platform"),
             new Platform(this, 840, 2910, "platform"),
-            new Platform(this, 1030, 2700, "platform"),
+            new Platform(this, 1030, 2790, "platform"),
             new Platform(this, 2600, 2540, "platform"),
-            new Platform(this, 450, 2600, "platform"),
             new Platform(this, 1620, 1400, "platform"),
-            new Platform(this, 1850, 2560, "platform"),
+            new Platform(this, 1750, 2660, "platform"),
             new Platform(this, 2200, 1600, "platform"),
-            new Platform(this, 4897, 2920, "platform"),
+            new Platform(this, 1200, 2782, "wall"),
             new Platform(this, 1200, 2879, "wall"),
             new Platform(this, 1200, 2976, "wall"),
             new Platform(this, 1200, 3073, "wall"),
-            new MovingPlatform(this, 1823, 463, "movingplatform"),
-            new MovingPlatform(this, 1072, 2404, "movingplatform"),
-            new MovingPlatform(this, 3304, 2960, "movingplatform"),
-            new MovingPlatform(this, 450, 2800, "movingplatformvertical"),
-            new MovingPlatform(this, 3304, 2760, "movingplatformvertical"),
+            new HorizontalMoving(this, 1823, 463, "movinghorizontal"),
+            new HorizontalMoving(this, 1072, 2404, "movinghorizontal"),
+            new HorizontalMoving(this, 3304, 2960, "movinghorizontal"),
+            new VerticalMoving(this, 1374, 2870, "movingvertical"),
+            new VerticalMoving(this, 450, 2800, "movingvertical"),
+            new VerticalMoving(this, 3304, 2760, "movingvertical"),
+            new VerticalMoving(this, 350, 2165, "movingvertical"),
         ], true)
 
         // Add enemies
@@ -79,9 +82,6 @@ export class GameScene extends Phaser.Scene {
         this.physics.add.overlap(this.player, this.enemys, this.hitenemy, null, this)
         
         // Als player een vijand raakt, dan wordt de score weer op 0 gezet, zodat hij alles weer moet verzamelen
-        if(this.hitenemy) {
-            this.life --
-        }
 
         this.cameras.main.setSize(800, 600)
         this.cameras.main.setBounds(0, 0, 5693, 3185)
@@ -89,9 +89,9 @@ export class GameScene extends Phaser.Scene {
     }
 
     private hitenemy(player:Player, enemy) {
-        this.registry.values.life--
+        this.registry.values.life = this.registry.values.life - 2
 
-        if(this.registry.values.life == 0) {
+        if(this.registry.values.life <= 1) {
             this.scene.remove("UIScene")
             this.scene.start("EndScene")
             this.registry.values.score = 0
@@ -110,5 +110,6 @@ export class GameScene extends Phaser.Scene {
 
     update(){
         this.player.update()
+        console.log(this.player.x, this.player.y)
     }
 }

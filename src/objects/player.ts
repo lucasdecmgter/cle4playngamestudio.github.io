@@ -28,7 +28,10 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
         // Alleen kunnen springen als je 'gegrond' bent
         let grounded = this.body.touching.down 
         if (this.cursors.up.isDown && grounded) {
-            this.setVelocityY(-320)
+            this.setVelocityY(-340)
+        }
+        if (grounded == false) {
+            this.setGravityY(40)
         }
     }
 }
