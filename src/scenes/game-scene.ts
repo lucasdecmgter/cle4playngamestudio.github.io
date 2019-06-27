@@ -45,7 +45,6 @@ export class GameScene extends Phaser.Scene {
         this.platforms.addMultiple([
             new Platform(this, 2847, 3153, "ground"),
             new Platform(this, 150, 1886, "platform"),
-            new Platform(this, 1030, 972, "platform"),
             new Platform(this, 70, 2714, "platform"),
             new Platform(this, 510, 2449, "platform"),
             new Platform(this, 975, 3030, "platform"),
@@ -53,9 +52,7 @@ export class GameScene extends Phaser.Scene {
             new Platform(this, 840, 2910, "platform"),
             new Platform(this, 1030, 2790, "platform"),
             new Platform(this, 2600, 2540, "platform"),
-            new Platform(this, 1620, 1400, "platform"),
             new Platform(this, 1750, 2660, "platform"),
-            new Platform(this, 2200, 1600, "platform"),
             new Platform(this, 1200, 2782, "wall"),
             new Platform(this, 1200, 2879, "wall"),
             new Platform(this, 1200, 2976, "wall"),

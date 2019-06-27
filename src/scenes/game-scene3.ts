@@ -1,7 +1,7 @@
 import { Player } from "../objects/player"
 import { Platform } from "../objects/platform"
 import { enemy } from "../objects/bomb"
-import { MovingPlatform } from "../objects/movingplatform"
+import { HorizontalMoving } from "../objects/movingplatform"
 
 export class GameScene3 extends Phaser.Scene {
 
@@ -10,7 +10,7 @@ export class GameScene3 extends Phaser.Scene {
     private chips: Phaser.Physics.Arcade.Group
     private Enemy: Phaser.GameObjects.Group
     private score = 0
-    private life = 200
+    private life = 100
 
     constructor() {
         super({ key: "GameScene3" })
@@ -18,7 +18,7 @@ export class GameScene3 extends Phaser.Scene {
 
     init(): void {
         this.registry.set("score", 0)
-        this.registry.set("life", 200)
+        this.registry.set("life", 100)
         
         this.physics.world.bounds.width = 5693
         this.physics.world.bounds.height = 3185
@@ -42,7 +42,7 @@ export class GameScene3 extends Phaser.Scene {
             new Platform(this, 2840, 3153, "ground"),
             new Platform(this, 600, 2960, "platform"),
             new Platform(this, 250, 3020, "platform"),
-            new MovingPlatform(this, 900, 2830, "platform")
+            new HorizontalMoving(this, 900, 2830, "platform")
         ], true)
 
         this.Enemy = this.add.group()

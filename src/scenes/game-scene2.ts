@@ -1,7 +1,7 @@
 import { Player } from "../objects/player"
 import { Platform } from "../objects/platform"
 import { enemy } from "../objects/bomb"
-import { MovingPlatform } from "../objects/movingplatform"
+import { HorizontalMoving } from "../objects/movingplatform"
 import { UIScene } from "../scenes/ui-scene"
 
 export class GameScene2 extends Phaser.Scene {
@@ -42,7 +42,7 @@ export class GameScene2 extends Phaser.Scene {
             new Platform(this, 2840, 3153, "ground"),
             new Platform(this, 50, 2965, "platform"),
             new Platform(this, 150, 3036, "platform"),
-            new MovingPlatform(this, 800, 3055, "platform"),
+            new HorizontalMoving(this, 800, 3055, "platform"),
          
         ], true)
 
