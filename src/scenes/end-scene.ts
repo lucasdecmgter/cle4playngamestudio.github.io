@@ -4,26 +4,24 @@ export class EndScene extends Phaser.Scene {
         super({key: "EndScene"})
     }
 
-    init(): void {
-    }
-
-    preload(): void {
-    }
+    init(): void {}
+    preload(): void {}
 
     create(): void {
         // change this to a nice game over image
-        this.add.image(0, 0, 'sky').setOrigin(0, 0)
-
-        // add text here
-        this.add.text(400, 300, 'GAME OVER, MAN!', { fontFamily: 'Arial Black', fontSize: 70, color: '#2ac9be' }).setOrigin(0.5).setStroke('#7df2ea', 16)
-
-        // add code here to switch to the GameScene, after a mouse click
-
-
-        let btn1 = this.add.image(100,500, 'mybutton')
+        this.add.image(0, 0, 'gameoverimage').setOrigin(0, 0)
+        
+        // Knop aanmaken die je opnieuw laat proberen
+        let btn1 = this.add.image(400,420, 'mybutton2')
         btn1.setInteractive()
         btn1.on('pointerdown', (pointer) => {
-            this.scene.start('GameScene')
+            this.scene.start(`GameScene`)
+        })
+
+        let btn2 = this.add.image(400,520, 'mybutton3')
+        btn2.setInteractive()
+        btn2.on('pointerdown', (pointer) => {
+            this.scene.start(`StartScene`)
         })
     }
 }

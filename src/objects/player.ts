@@ -3,7 +3,7 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     private cursors: Phaser.Input.Keyboard.CursorKeys
 
     constructor(scene) {
-        super(scene, 100, 450, "bmo")
+        super(scene, 200, 3080, "rob")
 
         this.cursors = this.scene.input.keyboard.createCursorKeys()
         
@@ -11,7 +11,7 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
         this.scene.physics.add.existing(this)
 
         this.setCollideWorldBounds(true)
-        this.setBounce(0.2)
+        this.setBounce(0.1)
         this.setDragX(600)
     }
 
@@ -25,11 +25,13 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
             this.flipX = false
         }
 
-        // jump when the body is touching the floor
-        
+        // Alleen kunnen springen als je 'gegrond' bent
         let grounded = this.body.touching.down 
         if (this.cursors.up.isDown && grounded) {
-            this.setVelocityY(-400)
+            this.setVelocityY(-340)
+        }
+        if (grounded == false) {
+            this.setGravityY(40)
         }
     }
 }

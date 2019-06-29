@@ -1,15 +1,16 @@
 import { Player } from "../objects/player"
 import { Platform } from "../objects/platform"
-import { Bomb } from "../objects/bomb"
-import { MovingPlatform } from "../objects/movingplatform"
+import { enemy } from "../objects/bomb"
+import { HorizontalMoving } from "../objects/movingplatform"
 
 export class GameScene3 extends Phaser.Scene {
 
     private player : Player
     private platforms: Phaser.GameObjects.Group
-    private stars: Phaser.Physics.Arcade.Group
-    private bombs: Phaser.GameObjects.Group
+    private chips: Phaser.Physics.Arcade.Group
+    private Enemy: Phaser.GameObjects.Group
     private score = 0
+    private life = 100
 
     constructor() {
         super({ key: "GameScene3" })
@@ -17,7 +18,7 @@ export class GameScene3 extends Phaser.Scene {
 
     init(): void {
         this.registry.set("score", 0)
-        this.registry.set("life", 200)
+        this.registry.set("life", 100)
         
         this.physics.world.bounds.width = 5693
         this.physics.world.bounds.height = 3185
@@ -26,9 +27,9 @@ export class GameScene3 extends Phaser.Scene {
     create(): void {
         this.add.image(0, 0, 'sky').setOrigin(0, 0)      
     
-        // 11 STARS
-        this.stars = this.physics.add.group({
-            key: 'star',
+        // 11 chipS
+        this.chips = this.physics.add.group({
+            key: 'chip',
             repeat: 11,
             setXY: { x: 12, y: 30, stepX: 70 },
         })
@@ -38,40 +39,46 @@ export class GameScene3 extends Phaser.Scene {
 
         this.platforms = this.add.group({ runChildUpdate: true })
         this.platforms.addMultiple([
-            new Platform(this, 800, 574, "ground"),
-            new Platform(this, 600, 275, "platform"),
-            new Platform(this, 250, 275, "platform"),
-            new MovingPlatform(this, 400, 450, "platform")
+            new Platform(this, 2840, 3153, "ground"),
+            new Platform(this, 600, 2960, "platform"),
+            new Platform(this, 250, 3020, "platform"),
+            new HorizontalMoving(this, 900, 2830, "platform")
         ], true)
 
-        this.bombs = this.add.group()
-        this.bombs.add(new Bomb(this, 250, 45), true)
+        this.Enemy = this.add.group()
+        this.Enemy.add(new enemy(this, 250, 2900), true)
     
         // define collisions for bouncing, and overlaps for pickups
-        this.physics.add.collider(this.stars, this.platforms)
+        this.physics.add.collider(this.chips, this.platforms)
         this.physics.add.collider(this.player, this.platforms)
-        this.physics.add.collider(this.bombs, this.platforms)
+        this.physics.add.collider(this.Enemy, this.platforms)
         
-        this.physics.add.overlap(this.player, this.stars, this.collectStar, null, this)
-        this.physics.add.overlap(this.player, this.bombs, this.hitBomb, null, this)
+        this.physics.add.overlap(this.player, this.chips, this.collectchip, null, this)
+        this.physics.add.overlap(this.player, this.Enemy, this.hitEnemy, null, this)
 
         this.cameras.main.setSize(800, 600)
-        this.cameras.main.setBounds(0, 0, 5693, 600)
+        this.cameras.main.setBounds(0, 0, 5693, 3185)
         this.cameras.main.startFollow(this.player)
     }
 
-    private hitBomb(player:Player, bomb) {
-        this.scene.start("EndScene")
+    private hitEnemy(player:Player, enemy) {
+        this.registry.values.life--
+
+        if(this.registry.values.life == 0) {
+            this.scene.remove("UIScene")
+            this.scene.start("EndScene")
+            this.registry.values.score = 0
+        }
     }
 
-    private collectStar(player : Player , star) : void {
-        this.stars.remove(star, true, true)
-        this.score++
-        console.log(this.score)
+    private collectchip(player : Player , chip) : void {
+        this.chips.remove(chip, true, true)
+        this.registry.values.score++
 
-        // TO DO check if we have all the stars, then go to the end scene
-        if(this.score == 12) {
-            this.scene.start("StartScene")
+        // TO DO check if we have all the chips, then go to the end scene
+        if(this.registry.values.score == 12) {
+            this.scene.remove("UIScene")
+            this.scene.start("WonScene")
         }
     }
 

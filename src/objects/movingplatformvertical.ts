@@ -1,4 +1,4 @@
-export class HorizontalMoving extends Phaser.Physics.Arcade.Sprite {
+export class VerticalMoving extends Phaser.Physics.Arcade.Sprite {
 
     private startPosition:number
 
@@ -9,19 +9,19 @@ export class HorizontalMoving extends Phaser.Physics.Arcade.Sprite {
         
         let body = this.body as Phaser.Physics.Arcade.Body
         body.setAllowGravity(false)
-        this.setGravity(0) 
+        this.setGravity(0)
         this.setImmovable(true)
 
         // moving platform
-        this.setVelocityX(60)
-        this.startPosition = x
+        this.setVelocityY(60)
+        this.startPosition = y
     }
 
     public update(): void {
-        if (this.x >= this.startPosition + 180) {
-            this.setVelocityX(-60)
-        }  else if (this.x <= this.startPosition - 180) {
-            this.setVelocityX(60)
+        if (this.y >= this.startPosition + 180) {
+            this.setVelocityY(-60)
+        }  else if (this.y <= this.startPosition - 180) {
+            this.setVelocityY(60)
         }
     }
 }

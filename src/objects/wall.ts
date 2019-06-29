@@ -12,7 +12,7 @@ export class Platform extends Phaser.Physics.Arcade.Sprite {
         this.setGravity(0) 
         this.setImmovable(true)
 
-    
+     
         this.setFrictionX(-10)
     }
 }

@@ -5,7 +5,7 @@ export class enemy extends Phaser.Physics.Arcade.Sprite {
 
         this.scene.physics.add.existing(this)
 
-        this.setBounce(1)
+        this.setBounce(0)
         this.setCollideWorldBounds(true)
 
         this.setVelocityX(80)
