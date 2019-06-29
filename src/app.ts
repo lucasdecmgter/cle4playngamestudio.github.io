@@ -6,7 +6,7 @@ import { GameScene2 } from "./scenes/game-scene2"
 import { GameScene3 } from "./scenes/game-scene3"
 import { EndScene } from "./scenes/end-scene"
 import { UIScene } from "./scenes/ui-scene"
-import { WonScene } from "./scenes/won-scene";
+import { WonScene } from "./scenes/won-scene"
 
 const config: GameConfig = {
     width: 800,
