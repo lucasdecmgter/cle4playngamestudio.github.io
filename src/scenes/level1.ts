@@ -1,9 +1,10 @@
 // Importeer objecten en interface scene
 import { Player } from "../objects/player"
 import { Platform } from "../objects/platform"
-import { Enemy } from "../objects/enemy"
-import { HorizontalMoving } from "../objects/movingplatform"
-import { VerticalMoving } from "../objects/movingplatformvertical"
+import { WalkingEnemy } from "../objects/walking-enemy"
+import { JumpingEnemy } from "../objects/jumping-enemy"
+import { HorizontalMoving } from "../objects/moving-platform-horizontal"
+import { VerticalMoving } from "../objects/moving-platform-vertical"
 import { UIScene } from "./ui-scene"
 
 export class Level1 extends Phaser.Scene {
@@ -72,8 +73,9 @@ export class Level1 extends Phaser.Scene {
 
         // Add enemies
         this.enemies = this.add.group()
-        this.enemies.add(new Enemy(this, 600, 2800), true)
-        
+        this.enemies.add(new JumpingEnemy(this, 2630, 2800), true)
+        this.enemies.add(new WalkingEnemy(this, 850, 2650), true)
+
         // Botsingen definiëren tussen player, chips en vijanden met platformen
         this.physics.add.collider(this.chip, this.platforms)
         this.physics.add.collider(this.player, this.platforms)

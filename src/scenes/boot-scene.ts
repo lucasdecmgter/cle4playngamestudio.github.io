@@ -14,7 +14,7 @@ export class BootScene extends Phaser.Scene {
         this.load.image('sky', require('../assets/background.png'))
         this.load.image('night', require('../assets/night.png'))
         this.load.image('chip', require('../assets/chip.png'))
-        this.load.image('enemy', require('../assets/enemy.png'))
+        this.load.image('jumpingenemy', require('../assets/enemy.png'))
         this.load.image('walkingenemy', require('../assets/enemy.png'))
         this.load.image('rob', require('../assets/robot.png'))
         this.load.image('platform', require('../assets/float.png'))
@@ -31,7 +31,6 @@ export class BootScene extends Phaser.Scene {
         this.load.on('complete', () => {
             console.log("everything is loaded")
             
-            // Start de startscene
             this.scene.start("StartScene")
         })
     }

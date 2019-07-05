@@ -12,7 +12,6 @@ export class HorizontalMoving extends Phaser.Physics.Arcade.Sprite {
         this.setGravity(0) 
         this.setImmovable(true)
 
-        // moving platform
         this.setVelocityX(60)
         this.startPosition = x
     }

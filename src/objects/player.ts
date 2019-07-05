@@ -3,8 +3,9 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     private cursors: Phaser.Input.Keyboard.CursorKeys
 
     constructor(scene) {
-        super(scene, 200, 3080, "rob")
 
+        // Waar spawnt de player
+        super(scene, 200, 3080, "rob")
         this.cursors = this.scene.input.keyboard.createCursorKeys()
         
         this.scene.add.existing(this)
@@ -17,6 +18,7 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
 
     public update(): void {
         
+        // Reageren op keyboard inputs en sprite omdraaien bij verandering van richting
         if (this.cursors.left.isDown) {
             this.setVelocityX(-200)
             this.flipX = true

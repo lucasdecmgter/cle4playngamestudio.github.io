@@ -1,13 +1,14 @@
 import { Player } from "../objects/player"
 import { Platform } from "../objects/platform"
-import { Enemy } from "../objects/enemy"
-import { HorizontalMoving } from "../objects/movingplatform"
+import { WalkingEnemy } from "../objects/walking-enemy"
+import { JumpingEnemy } from "../objects/jumping-enemy"
+import { HorizontalMoving } from "../objects/moving-platform-horizontal"
 
 export class Level3 extends Phaser.Scene {
     private player : Player
     private platforms: Phaser.GameObjects.Group
     private chips: Phaser.Physics.Arcade.Group
-    private Enemy: Phaser.GameObjects.Group
+    private enemies: Phaser.GameObjects.Group
 
     constructor() {
         super({ key: "Level3" })
@@ -40,15 +41,16 @@ export class Level3 extends Phaser.Scene {
             new HorizontalMoving(this, 900, 2830, "platform")
         ], true)
 
-        this.Enemy = this.add.group()
-        this.Enemy.add(new Enemy(this, 250, 2900), true)
+        this.enemies = this.add.group()
+        this.enemies.add(new JumpingEnemy(this, 250, 2900), true)
+        this.enemies.add(new WalkingEnemy(this, 600, 2800), true)
 
         this.physics.add.collider(this.chips, this.platforms)
         this.physics.add.collider(this.player, this.platforms)
-        this.physics.add.collider(this.Enemy, this.platforms)
+        this.physics.add.collider(this.enemies, this.platforms)
         
         this.physics.add.overlap(this.player, this.chips, this.collectchip, null, this)
-        this.physics.add.overlap(this.player, this.Enemy, this.hitEnemy, null, this)
+        this.physics.add.overlap(this.player, this.enemies, this.hitEnemy, null, this)
 
         this.cameras.main.setSize(800, 600)
         this.cameras.main.setBounds(0, 0, 5693, 3185)
