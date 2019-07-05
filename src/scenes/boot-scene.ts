@@ -1,13 +1,15 @@
 export class BootScene extends Phaser.Scene {
-
     private graphics: Phaser.GameObjects.Graphics
 
+    // Eigenschappen overerven van parent
     constructor() {
         super({ key: "BootScene" })
     }
 
+    // Algemene eigenschappen komen in het level
     init(){}
 
+    // Laad alle objecten en afbeeldingen vooraf
     preload(): void {
         this.load.image('sky', require('../assets/background.png'))
         this.load.image('night', require('../assets/night.png'))
@@ -26,7 +28,6 @@ export class BootScene extends Phaser.Scene {
         this.load.image('gameoverimage', require('../assets/gameoverimage.png'))
         this.load.image('youwonimage', require('../assets/victory.png'))
         this.load.image('cloud', require('../assets/cloud.png'))
-
         this.load.on('complete', () => {
             console.log("everything is loaded")
             

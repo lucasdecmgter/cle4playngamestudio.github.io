@@ -4,11 +4,16 @@ export class EndScene extends Phaser.Scene {
         super({key: "EndScene"})
     }
 
+    // Algemene eigenschappen komen in scene
     init(): void {}
+
+    // Laad de afbeeldingen en objecten vooraf
     preload(): void {}
 
+    // Objecten en afbeeldingen spawnen
     create(): void {
-        // change this to a nice game over image
+
+        // Achtergrondafbeelding
         this.add.image(0, 0, 'gameoverimage').setOrigin(0, 0)
         
         // Knop aanmaken die je opnieuw laat proberen
@@ -18,6 +23,7 @@ export class EndScene extends Phaser.Scene {
             this.scene.start(`GameScene`)
         })
 
+        // Knop aanmaken die je laat terugkeren naar het hoofdmenu
         let btn2 = this.add.image(400,520, 'mybutton3')
         btn2.setInteractive()
         btn2.on('pointerdown', (pointer) => {
