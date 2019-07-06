@@ -3,3 +3,4 @@
 - Vaste collaborateurs: Prewish en Najee
 - Kaders: Discovery, swindle & robots
 - Codetaal waarin wordt gewerkt is TypeScript
+- In dit project wordt gebruik gemaakt van de front-end library Phaser
