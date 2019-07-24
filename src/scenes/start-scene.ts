@@ -1,4 +1,10 @@
+import { Arcade } from "../arcade/arcade"
+import { Game } from "../app"
+
 export class StartScene extends Phaser.Scene {
+
+    private arcade : Arcade
+    private nextGameListener : EventListener
 
     // Eigenschappen overerven van parent
     constructor() {
@@ -6,7 +12,16 @@ export class StartScene extends Phaser.Scene {
     }
 
     // Algemene eigenschappen in scene zetten
-    init(): void {
+    create(): void {
+        let g = this.game as Game
+        this.arcade = g.arcade
+
+        this.nextGameListener = () => this.nextGame()
+        document.addEventListener("joystick0button0", this.nextGameListener)
+    }
+
+    private nextGame() {
+        document.removeEventListener("joystick0button0", this.nextGameListener)
     }
 
     preload(): void {              
@@ -23,5 +38,11 @@ export class StartScene extends Phaser.Scene {
         btn1.on('pointerdown', (pointer) => {
             this.scene.start('Level1')
         })
+    }
+
+    public update(){
+        for (let joystick of this.arcade.Joysticks) {
+            joystick.update()
+        }
     }
 }

@@ -38,8 +38,8 @@ export class Level1 extends Phaser.Scene {
         // 30 chips
         this.chip = this.physics.add.group({
             key: 'chip',
-            repeat: 29,
-            setXY: { x: 12, y: 30, stepX: 70 },
+            repeat: 70,
+            setXY: { x: 12, y: 30, stepX: 80 },
         })
 
         // Het bestuurbare poppetje
@@ -58,6 +58,28 @@ export class Level1 extends Phaser.Scene {
             new Platform(this, 1030, 2790, "platform"),
             new Platform(this, 2600, 2540, "platform"),
             new Platform(this, 1750, 2660, "platform"),
+            new Platform(this, 500, 2000, "platform"),
+
+            new Platform(this, 2847, 3153, "ground"),
+            new Platform(this, 150, 1886, "platform"),
+            new Platform(this, 70, 2714, "platform"),
+            new Platform(this, 510, 2449, "platform"),
+            new Platform(this, 975, 3030, "platform"),
+            new Platform(this, 750, 2560, "platform"),
+            new Platform(this, 840, 2910, "platform"),
+            new Platform(this, 1030, 2790, "platform"),
+            new Platform(this, 2600, 2540, "platform"),
+            new Platform(this, 1750, 2660, "platform"),
+            new Platform(this, 500, 2000, "platform"),
+            new Platform(this, 1200, 2782, "wall"),
+            new Platform(this, 1200, 2879, "wall"),
+            new Platform(this, 1200, 2976, "wall"),
+            new Platform(this, 1200, 3073, "wall"),
+
+            new Platform(this, 1200, 2782, "wall"),
+            new Platform(this, 1200, 2879, "wall"),
+            new Platform(this, 1200, 2976, "wall"),
+            new Platform(this, 1200, 3073, "wall"),
             new Platform(this, 1200, 2782, "wall"),
             new Platform(this, 1200, 2879, "wall"),
             new Platform(this, 1200, 2976, "wall"),
@@ -65,10 +87,27 @@ export class Level1 extends Phaser.Scene {
             new HorizontalMoving(this, 1823, 463, "movinghorizontal"),
             new HorizontalMoving(this, 1072, 2404, "movinghorizontal"),
             new HorizontalMoving(this, 3304, 2960, "movinghorizontal"),
+
+            new HorizontalMoving(this, 1823, 463, "movinghorizontal"),
+            new HorizontalMoving(this, 1072, 2404, "movinghorizontal"),
+            new HorizontalMoving(this, 3304, 2960, "movinghorizontal"),
+            new HorizontalMoving(this, 1823, 463, "movinghorizontal"),
+            new HorizontalMoving(this, 1072, 2404, "movinghorizontal"),
+            new HorizontalMoving(this, 3304, 2960, "movinghorizontal"),
+            new HorizontalMoving(this, 1823, 463, "movinghorizontal"),
+            new HorizontalMoving(this, 1072, 2404, "movinghorizontal"),
+            new HorizontalMoving(this, 3304, 2960, "movinghorizontal"),
             new VerticalMoving(this, 1374, 2870, "movingvertical"),
             new VerticalMoving(this, 450, 2800, "movingvertical"),
             new VerticalMoving(this, 3304, 2760, "movingvertical"),
             new VerticalMoving(this, 350, 2165, "movingvertical"),
+
+            new VerticalMoving(this, 450, 2800, "movingvertical"),
+            new VerticalMoving(this, 3304, 2760, "movingvertical"),
+            new VerticalMoving(this, 350, 2165, "movingvertical"),
+            new VerticalMoving(this, 450, 2800, "movingvertical"),
+            new VerticalMoving(this, 3304, 2760, "movingvertical"),
+            new VerticalMoving(this, 350, 2165, "movingvertical")
         ], true)
 
         // Add enemies
@@ -86,7 +125,7 @@ export class Level1 extends Phaser.Scene {
         this.physics.add.overlap(this.player, this.enemies, this.hitEnemy, null, this)
         
         // Cameragedrag
-        this.cameras.main.setSize(800, 600)
+        this.cameras.main.setSize(1440, 900)
         this.cameras.main.setBounds(0, 0, 5693, 3185)
         this.cameras.main.startFollow(this.player)
     }
@@ -107,7 +146,7 @@ export class Level1 extends Phaser.Scene {
         this.registry.values.score++
 
         // Ga naar het volgende level bij genoeg chips
-        if(this.registry.values.score == 25) {
+        if(this.registry.values.score == 50) {
             this.scene.start("Level2")
         }
     }

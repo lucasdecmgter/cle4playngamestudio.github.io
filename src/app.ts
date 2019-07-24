@@ -1,4 +1,5 @@
 import "phaser";
+import { Arcade } from "./arcade/arcade"
 import { BootScene } from "./scenes/boot-scene"
 import { StartScene } from "./scenes/start-scene"
 import { Level1 } from "./scenes/level1"
@@ -9,8 +10,8 @@ import { UIScene } from "./scenes/ui-scene"
 import { WonScene } from "./scenes/won-scene"
 
 const config: GameConfig = {
-    width: 800,
-    height: 600,
+    width: 1440,
+    height: 900,
     parent: "game",
     resolution: window.devicePixelRatio,
     scene: [BootScene, StartScene, UIScene, Level1, Level2, Level3, EndScene, WonScene],
@@ -28,8 +29,10 @@ const config: GameConfig = {
 };
 
 export class Game extends Phaser.Game {
+    public arcade:Arcade
     constructor(config: GameConfig) {
         super(config)
+        this.arcade = new Arcade()
     }
 }
 
