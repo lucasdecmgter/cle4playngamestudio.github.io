@@ -3,6 +3,7 @@ import { Platform } from "../objects/platform"
 import { WalkingEnemy } from "../objects/walking-enemy"
 import { JumpingEnemy } from "../objects/jumping-enemy"
 import { HorizontalMoving } from "../objects/moving-platform-horizontal"
+import { VerticalMoving } from "../objects/moving-platform-vertical"
 
 export class Level2 extends Phaser.Scene {
     private player : Player
@@ -39,7 +40,57 @@ export class Level2 extends Phaser.Scene {
             new Platform(this, 50, 2965, "platform"),
             new Platform(this, 150, 3036, "platform"),
             new HorizontalMoving(this, 800, 3055, "platform"),
-         
+            new Platform(this, 2847, 3153, "ground"),
+            new Platform(this, 150, 1886, "platform"),
+            new Platform(this, 70, 2714, "platform"),
+            new Platform(this, 510, 2449, "platform"),
+            new Platform(this, 975, 3030, "platform"),
+            new Platform(this, 750, 2560, "platform"),
+            new Platform(this, 840, 2910, "platform"),
+            new Platform(this, 1030, 2790, "platform"),
+            new Platform(this, 2600, 2540, "platform"),
+            new Platform(this, 1750, 2660, "platform"),
+            new Platform(this, 2847, 3153, "ground"),
+            new Platform(this, 150, 1886, "platform"),
+            new Platform(this, 70, 2714, "platform"),
+            new Platform(this, 510, 2449, "platform"),
+            new Platform(this, 975, 3030, "platform"),
+            new Platform(this, 750, 2560, "platform"),
+            new Platform(this, 840, 2910, "platform"),
+            new Platform(this, 1030, 2790, "platform"),
+            new Platform(this, 2600, 2540, "platform"),
+            new Platform(this, 1750, 2660, "platform"),
+            new Platform(this, 2847, 3153, "ground"),
+            new Platform(this, 150, 1886, "platform"),
+            new Platform(this, 70, 2714, "platform"),
+            new Platform(this, 510, 2449, "platform"),
+            new Platform(this, 975, 3030, "platform"),
+            new Platform(this, 750, 2560, "platform"),
+            new Platform(this, 840, 2910, "platform"),
+            new Platform(this, 1030, 2790, "platform"),
+            new Platform(this, 2600, 2540, "platform"),
+            new Platform(this, 1750, 2660, "platform"),
+            new Platform(this, 1200, 2782, "wall"),
+            new Platform(this, 1200, 2879, "wall"),
+            new Platform(this, 1200, 2976, "wall"),
+            new Platform(this, 1200, 3073, "wall"),
+            new HorizontalMoving(this, 1823, 463, "movinghorizontal"),
+            new HorizontalMoving(this, 1072, 2404, "movinghorizontal"),
+            new HorizontalMoving(this, 3304, 2960, "movinghorizontal"),
+            new HorizontalMoving(this, 1823, 463, "movinghorizontal"),
+            new HorizontalMoving(this, 1072, 2404, "movinghorizontal"),
+            new HorizontalMoving(this, 3304, 2960, "movinghorizontal"),
+            new HorizontalMoving(this, 1823, 463, "movinghorizontal"),
+            new HorizontalMoving(this, 1072, 2404, "movinghorizontal"),
+            new HorizontalMoving(this, 3304, 2960, "movinghorizontal"),
+            new VerticalMoving(this, 1374, 2870, "movingvertical"),
+            new VerticalMoving(this, 450, 2800, "movingvertical"),
+            new VerticalMoving(this, 3304, 2760, "movingvertical"),
+            new VerticalMoving(this, 350, 2165, "movingvertical"),
+            new VerticalMoving(this, 1374, 2870, "movingvertical"),
+            new VerticalMoving(this, 450, 2800, "movingvertical"),
+            new VerticalMoving(this, 3304, 2760, "movingvertical"),
+            new VerticalMoving(this, 350, 2165, "movingvertical")
         ], true)
 
         this.enemies = this.add.group()
