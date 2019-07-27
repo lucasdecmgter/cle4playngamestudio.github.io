@@ -39,7 +39,6 @@ export class Level2 extends Phaser.Scene {
             new Platform(this, 2840, 3153, "ground"),
             new Platform(this, 50, 2965, "platform"),
             new Platform(this, 150, 3036, "platform"),
-            new HorizontalMoving(this, 800, 3055, "platform"),
             new Platform(this, 2847, 3153, "ground"),
             new Platform(this, 150, 1886, "platform"),
             new Platform(this, 70, 2714, "platform"),
@@ -50,7 +49,7 @@ export class Level2 extends Phaser.Scene {
             new Platform(this, 1030, 2790, "platform"),
             new Platform(this, 2600, 2540, "platform"),
             new Platform(this, 1750, 2660, "platform"),
-            new Platform(this, 2847, 3153, "ground"),
+
             new Platform(this, 150, 1886, "platform"),
             new Platform(this, 70, 2714, "platform"),
             new Platform(this, 510, 2449, "platform"),
@@ -60,7 +59,7 @@ export class Level2 extends Phaser.Scene {
             new Platform(this, 1030, 2790, "platform"),
             new Platform(this, 2600, 2540, "platform"),
             new Platform(this, 1750, 2660, "platform"),
-            new Platform(this, 2847, 3153, "ground"),
+
             new Platform(this, 150, 1886, "platform"),
             new Platform(this, 70, 2714, "platform"),
             new Platform(this, 510, 2449, "platform"),
@@ -74,6 +73,7 @@ export class Level2 extends Phaser.Scene {
             new Platform(this, 1200, 2879, "wall"),
             new Platform(this, 1200, 2976, "wall"),
             new Platform(this, 1200, 3073, "wall"),
+            new HorizontalMoving(this, 800, 3055, "platform"),
             new HorizontalMoving(this, 1823, 463, "movinghorizontal"),
             new HorizontalMoving(this, 1072, 2404, "movinghorizontal"),
             new HorizontalMoving(this, 3304, 2960, "movinghorizontal"),

@@ -58,7 +58,7 @@ export class Level1 extends Phaser.Scene {
             new Platform(this, 1030, 2790, "platform"),
             new Platform(this, 2600, 2540, "platform"),
             new Platform(this, 1750, 2660, "platform"),
-            new Platform(this, 2847, 3153, "ground"),
+
             new Platform(this, 150, 1886, "platform"),
             new Platform(this, 70, 2714, "platform"),
             new Platform(this, 510, 2449, "platform"),
@@ -68,7 +68,7 @@ export class Level1 extends Phaser.Scene {
             new Platform(this, 1030, 2790, "platform"),
             new Platform(this, 2600, 2540, "platform"),
             new Platform(this, 1750, 2660, "platform"),
-            new Platform(this, 2847, 3153, "ground"),
+            
             new Platform(this, 150, 1886, "platform"),
             new Platform(this, 70, 2714, "platform"),
             new Platform(this, 510, 2449, "platform"),
@@ -137,7 +137,7 @@ export class Level1 extends Phaser.Scene {
         this.registry.values.score++
 
         // Ga naar het volgende level bij genoeg chips
-        if(this.registry.values.score == 25) {
+        if(this.registry.values.score == 1) {
             this.scene.start("Level2")
         }
     }
