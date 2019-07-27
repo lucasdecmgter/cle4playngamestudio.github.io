@@ -20,7 +20,7 @@ export class EndScene extends Phaser.Scene {
         let btn1 = this.add.image(400,420, 'mybutton2')
         btn1.setInteractive()
         btn1.on('pointerdown', (pointer) => {
-            this.scene.start(`GameScene`)
+            this.scene.start(`Level1`)
         })
 
         // Knop aanmaken die je laat terugkeren naar het hoofdmenu
