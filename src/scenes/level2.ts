@@ -123,7 +123,7 @@ export class Level2 extends Phaser.Scene {
         this.chip.remove(chip, true, true)
         this.registry.values.score++
 
-        if(this.registry.values.score == 12) {
+        if(this.registry.values.score == 1) {
             this.scene.start("Level3")
         }
     }
