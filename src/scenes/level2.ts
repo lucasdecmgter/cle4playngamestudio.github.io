@@ -28,74 +28,55 @@ export class Level2 extends Phaser.Scene {
 
         this.chip = this.physics.add.group({
             key: 'chip',
-            repeat: 11,
-            setXY: { x: 12, y: 2700, stepX: 70 },
+            repeat: 50,
+            setXY: { x: 12, y: 50, stepX: 110 },
         })
 
         this.player = new Player(this)
 
         this.platforms = this.add.group({ runChildUpdate: true })
         this.platforms.addMultiple([
-            new Platform(this, 2840, 3153, "ground"),
-            new Platform(this, 50, 2965, "platform"),
-            new Platform(this, 150, 3036, "platform"),
-            new Platform(this, 2847, 3153, "ground"),
-            new Platform(this, 150, 1886, "platform"),
-            new Platform(this, 70, 2714, "platform"),
-            new Platform(this, 510, 2449, "platform"),
-            new Platform(this, 975, 3030, "platform"),
-            new Platform(this, 750, 2560, "platform"),
-            new Platform(this, 840, 2910, "platform"),
-            new Platform(this, 1030, 2790, "platform"),
-            new Platform(this, 2600, 2540, "platform"),
-            new Platform(this, 1750, 2660, "platform"),
-
-            new Platform(this, 150, 1886, "platform"),
-            new Platform(this, 70, 2714, "platform"),
-            new Platform(this, 510, 2449, "platform"),
-            new Platform(this, 975, 3030, "platform"),
-            new Platform(this, 750, 2560, "platform"),
-            new Platform(this, 840, 2910, "platform"),
-            new Platform(this, 1030, 2790, "platform"),
-            new Platform(this, 2600, 2540, "platform"),
-            new Platform(this, 1750, 2660, "platform"),
-
-            new Platform(this, 150, 1886, "platform"),
-            new Platform(this, 70, 2714, "platform"),
-            new Platform(this, 510, 2449, "platform"),
-            new Platform(this, 975, 3030, "platform"),
-            new Platform(this, 750, 2560, "platform"),
-            new Platform(this, 840, 2910, "platform"),
-            new Platform(this, 1030, 2790, "platform"),
-            new Platform(this, 2600, 2540, "platform"),
-            new Platform(this, 1750, 2660, "platform"),
-            new Platform(this, 1200, 2782, "wall"),
-            new Platform(this, 1200, 2879, "wall"),
-            new Platform(this, 1200, 2976, "wall"),
-            new Platform(this, 1200, 3073, "wall"),
-            new HorizontalMoving(this, 800, 3055, "platform"),
-            new HorizontalMoving(this, 1823, 463, "movinghorizontal"),
-            new HorizontalMoving(this, 1072, 2404, "movinghorizontal"),
-            new HorizontalMoving(this, 3304, 2960, "movinghorizontal"),
-            new HorizontalMoving(this, 1823, 463, "movinghorizontal"),
-            new HorizontalMoving(this, 1072, 2404, "movinghorizontal"),
-            new HorizontalMoving(this, 3304, 2960, "movinghorizontal"),
-            new HorizontalMoving(this, 1823, 463, "movinghorizontal"),
-            new HorizontalMoving(this, 1072, 2404, "movinghorizontal"),
-            new HorizontalMoving(this, 3304, 2960, "movinghorizontal"),
-            new VerticalMoving(this, 1374, 2870, "movingvertical"),
-            new VerticalMoving(this, 450, 2800, "movingvertical"),
-            new VerticalMoving(this, 3304, 2760, "movingvertical"),
-            new VerticalMoving(this, 350, 2165, "movingvertical"),
-            new VerticalMoving(this, 1374, 2870, "movingvertical"),
-            new VerticalMoving(this, 450, 2800, "movingvertical"),
-            new VerticalMoving(this, 3304, 2760, "movingvertical"),
-            new VerticalMoving(this, 350, 2165, "movingvertical")
+            new Platform(this, 2845, 3153, "ground"),
+            new Platform(this, 50, 3025, "platform"),
+            new Platform(this, 800, 3020, "platform"),
+            new Platform(this, 1050, 2895, "platform"),
+            new Platform(this, 800, 2770, "platform"),
+            new Platform(this, 1050, 2655, "platform"),
+            new Platform(this, 1300, 2540, "platform"),
+            new Platform(this, 2210, 2470, "platform"),
+            new Platform(this, 2540, 2410, "platform"),
+            new Platform(this, 2680, 3015, "platform"),
+            new Platform(this, 2350, 2885, "platform"),
+            new Platform(this, 3595, 2560, "platform"),
+            new Platform(this, 3910, 2640, "platform"),
+            new Platform(this, 4160, 2760, "platform"),
+            new Platform(this, 4400, 2660, "platform"),
+            new Platform(this, 4640, 2830, "platform"),
+            new Platform(this, 4909, 3025, "platform"),
+            new Platform(this, 4331, 2886, "platform"),
+            new Platform(this, 4731, 2446, "platform"),
+            new Platform(this, 2868, 2491, "wall"),
+            new Platform(this, 2868, 2588, "wall"),
+            new Platform(this, 2868, 2685, "wall"),
+            new Platform(this, 2868, 2782, "wall"),
+            new Platform(this, 2868, 2879, "wall"),
+            new Platform(this, 2868, 2976, "wall"),
+            new Platform(this, 2868, 3073, "wall"),
+            new HorizontalMoving(this, 3235, 2470, "movinghorizontal"),
+            new HorizontalMoving(this, 5380, 2910, "movinghorizontal"),
+            new HorizontalMoving(this, 4863, 2560, "movinghorizontal"),
+            new HorizontalMoving(this, 750, 2500, "movinghorizontal"),
+            new VerticalMoving(this, 1680, 2850, "movingvertical"),
+            new VerticalMoving(this, 1920, 2763, "movingvertical"),
+            new VerticalMoving(this, 3271, 2840, "movingvertical"),
+            new VerticalMoving(this, 4464, 2165, "movingvertical"),
+            new VerticalMoving(this, 300, 2780, "movingvertical")
         ], true)
 
         this.enemies = this.add.group()
-        this.enemies.add(new JumpingEnemy(this, 600, 3035), true)
-        this.enemies.add(new WalkingEnemy(this, 500, 3030), true)
+        this.enemies.add(new JumpingEnemy(this, 600, 2835), true)
+        this.enemies.add(new JumpingEnemy(this, 4500, 2635), true)
+        this.enemies.add(new WalkingEnemy(this, 3000, 3030), true)
 
         this.physics.add.collider(this.chip, this.platforms)
         this.physics.add.collider(this.player, this.platforms)
@@ -110,7 +91,7 @@ export class Level2 extends Phaser.Scene {
     }
 
     private hitenemy(player:Player, enemy) {
-        this.registry.values.life--
+        this.registry.values.life = this.registry.values.life - 2
 
         if(this.registry.values.life == 0) {
             this.scene.remove("UIScene")
@@ -123,12 +104,13 @@ export class Level2 extends Phaser.Scene {
         this.chip.remove(chip, true, true)
         this.registry.values.score++
 
-        if(this.registry.values.score == 1) {
+        if(this.registry.values.score == 45) {
             this.scene.start("Level3")
         }
     }
 
     update(){
         this.player.update()
+        console.log(this.player.x, this.player.y)
     }
 }

@@ -38,8 +38,8 @@ export class Level1 extends Phaser.Scene {
         // 30 chips
         this.chip = this.physics.add.group({
             key: 'chip',
-            repeat: 29,
-            setXY: { x: 12, y: 30, stepX: 70 },
+            repeat: 25,
+            setXY: { x: 450, y: 2300, stepX: 220 },
         })
 
         // Het bestuurbare poppetje
@@ -49,61 +49,39 @@ export class Level1 extends Phaser.Scene {
         this.platforms = this.add.group({ runChildUpdate: true })
         this.platforms.addMultiple([
             new Platform(this, 2847, 3153, "ground"),
-            new Platform(this, 150, 1886, "platform"),
-            new Platform(this, 70, 2714, "platform"),
-            new Platform(this, 510, 2449, "platform"),
-            new Platform(this, 975, 3030, "platform"),
-            new Platform(this, 750, 2560, "platform"),
-            new Platform(this, 840, 2910, "platform"),
-            new Platform(this, 1030, 2790, "platform"),
-            new Platform(this, 2600, 2540, "platform"),
-            new Platform(this, 1750, 2660, "platform"),
-
-            new Platform(this, 150, 1886, "platform"),
-            new Platform(this, 70, 2714, "platform"),
-            new Platform(this, 510, 2449, "platform"),
-            new Platform(this, 975, 3030, "platform"),
-            new Platform(this, 750, 2560, "platform"),
-            new Platform(this, 840, 2910, "platform"),
-            new Platform(this, 1030, 2790, "platform"),
-            new Platform(this, 2600, 2540, "platform"),
-            new Platform(this, 1750, 2660, "platform"),
-            
-            new Platform(this, 150, 1886, "platform"),
-            new Platform(this, 70, 2714, "platform"),
-            new Platform(this, 510, 2449, "platform"),
-            new Platform(this, 975, 3030, "platform"),
-            new Platform(this, 750, 2560, "platform"),
-            new Platform(this, 840, 2910, "platform"),
-            new Platform(this, 1030, 2790, "platform"),
-            new Platform(this, 2600, 2540, "platform"),
-            new Platform(this, 1750, 2660, "platform"),
-            new Platform(this, 1200, 2782, "wall"),
-            new Platform(this, 1200, 2879, "wall"),
-            new Platform(this, 1200, 2976, "wall"),
-            new Platform(this, 1200, 3073, "wall"),
+            new Platform(this, 400, 3025, "platform"),
+            new Platform(this, 700, 3025, "platform"),
+            new Platform(this, 1050, 2910, "platform"),
+            new Platform(this, 2600, 3025, "platform"),
+            new Platform(this, 2450, 2410, "platform"),
+            new Platform(this, 2720, 2410, "platform"),
+            new Platform(this, 3260, 2900, "platform"),
+            new Platform(this, 3975, 2910, "platform"),
+            new Platform(this, 4220, 2795, "platform"),
+            new Platform(this, 3975, 2680, "platform"),
+            new Platform(this, 4220, 2565, "platform"),
+            new Platform(this, 3975, 2450, "platform"),
+            new Platform(this, 2000, 2685, "wall"),
+            new Platform(this, 2000, 2782, "wall"),
+            new Platform(this, 2000, 2879, "wall"),
+            new Platform(this, 2000, 2976, "wall"),
+            new Platform(this, 2000, 3073, "wall"),
+            new HorizontalMoving(this, 1370, 3020, "movinghorizontal"),
             new HorizontalMoving(this, 1823, 463, "movinghorizontal"),
-            new HorizontalMoving(this, 1072, 2404, "movinghorizontal"),
-            new HorizontalMoving(this, 3304, 2960, "movinghorizontal"),
-            new HorizontalMoving(this, 1823, 463, "movinghorizontal"),
-            new HorizontalMoving(this, 1072, 2404, "movinghorizontal"),
-            new HorizontalMoving(this, 3304, 2960, "movinghorizontal"),
-            new HorizontalMoving(this, 1823, 463, "movinghorizontal"),
-            new HorizontalMoving(this, 1072, 2404, "movinghorizontal"),
-            new HorizontalMoving(this, 3304, 2960, "movinghorizontal"),
-            new VerticalMoving(this, 1374, 2870, "movingvertical"),
-            new VerticalMoving(this, 450, 2800, "movingvertical"),
-            new VerticalMoving(this, 3304, 2760, "movingvertical"),
-            new VerticalMoving(this, 350, 2165, "movingvertical"),
-            new VerticalMoving(this, 1374, 2870, "movingvertical"),
-            new VerticalMoving(this, 450, 2800, "movingvertical"),
-            new VerticalMoving(this, 3304, 2760, "movingvertical"),
-            new VerticalMoving(this, 350, 2165, "movingvertical")
+            new HorizontalMoving(this, 2300, 2920, "movinghorizontal"),
+            new HorizontalMoving(this, 3640, 3026, "movinghorizontal"),
+            new HorizontalMoving(this, 4910, 2390, "movinghorizontal"),
+            new HorizontalMoving(this, 4910, 2920, "movinghorizontal"),
+            new VerticalMoving(this, 1800, 2850, "movingvertical"),
+            new VerticalMoving(this, 3050, 2660, "movingvertical"),
+            new VerticalMoving(this, 4640, 2660, "movingvertical"),
+            new VerticalMoving(this, 5350, 2660, "movingvertical"),
+            new VerticalMoving(this, 2130, 2660, "movingvertical")
         ], true)
 
         // Add enemies
         this.enemies = this.add.group()
-        this.enemies.add(new JumpingEnemy(this, 2630, 2800), true)
+        this.enemies.add(new JumpingEnemy(this, 4500, 2800), true)
         this.enemies.add(new WalkingEnemy(this, 850, 2650), true)
 
         // Botsingen definiëren tussen player, chips en vijanden met platformen
@@ -124,7 +102,7 @@ export class Level1 extends Phaser.Scene {
     private hitEnemy() {
         this.registry.values.life = this.registry.values.life - 2
 
-        if(this.registry.values.life <= 1) {
+        if(this.registry.values.life <= 0) {
             this.scene.remove("UIScene")
             this.scene.start("EndScene")
             this.registry.values.score = 0
@@ -137,7 +115,7 @@ export class Level1 extends Phaser.Scene {
         this.registry.values.score++
 
         // Ga naar het volgende level bij genoeg chips
-        if(this.registry.values.score == 1) {
+        if(this.registry.values.score == 20) {
             this.scene.start("Level2")
         }
     }
@@ -145,6 +123,5 @@ export class Level1 extends Phaser.Scene {
     // Update 60 keer per seconde
     update(){
         this.player.update()
-        console.log(this.player.x, this.player.y)
     }
 }
