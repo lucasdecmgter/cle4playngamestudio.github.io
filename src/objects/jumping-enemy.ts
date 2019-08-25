@@ -5,9 +5,10 @@ export class JumpingEnemy extends Phaser.Physics.Arcade.Sprite {
         super(scene, x, y, "jumpingenemy")
         this.scene.physics.add.existing(this)
 
-        this.setBounce(1)
+        this.setBounceY(1)
+        this.setBounceX(0.9)
         this.setCollideWorldBounds(true)
 
-        this.setVelocityX(80)
+        this.setVelocityX(70)
     }
 }

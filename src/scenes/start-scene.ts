@@ -9,8 +9,7 @@ export class StartScene extends Phaser.Scene {
     init(): void {
     }
 
-    preload(): void {              
-        
+    preload(): void {
         // Achtergrondafbeelding
         this.add.image(300, 300, 'night')
 
